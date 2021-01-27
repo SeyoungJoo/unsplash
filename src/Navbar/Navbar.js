@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { FaBars, FaTwitter } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 import { links, social } from './data'
 import logo from './logo.svg'
 
@@ -19,11 +20,12 @@ const Navbar = () => {
   },[showLinks])
 
   return (
-  <Wrapper>
-    <nav>
+    <NavContainer>
       <div className="nav-center">
         <div className="nav-header">
-          <img src={logo} alt="logo"/>
+          <Link to ='/'>x
+            <img src={logo} alt="logo"/>
+          </Link>
           <button className='nav-toggle' onClick={()=> {
             setShowLinks(!showLinks)
           }}>
@@ -36,19 +38,18 @@ const Navbar = () => {
              const {id, url, text} = link
              return (
              <li key={id}>
-               <a href={url}>{text}</a>
+               <Link to={url}>{text}</Link>
              </li>)
            })}
           </ul>
         </div>
-        </div>
-    </nav>
-  </Wrapper>
+      </div>
+    </NavContainer>
   )
 }
 
 
-const Wrapper = styled.section`
+const NavContainer = styled.nav`
   nav {
     background: var(--clr-white);
     box-shadow: var(--light-shadow);
