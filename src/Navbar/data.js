@@ -4,7 +4,7 @@ export const links = [
   {
     id: 1,
     url: '/',
-    text: 'random',
+    text: 'home',
   },
   {
     id: 2,
@@ -13,19 +13,14 @@ export const links = [
   },
   {
     id: 3,
-    url: '/projects',
-    text: 'projects',
+    url: '/photos',
+    text: 'photos',
   },
   {
     id: 4,
     url: '/contact',
     text: 'contact',
-  },
-  {
-    id: 5,
-    url: '/profile',
-    text: 'profile',
-  },
+  }
 ]
 
 export const social = [
