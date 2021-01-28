@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import styled from 'styled-components'
 import data from './data';
 import Question from './Question';
-import styled from 'styled-components'
 
 function Questions() {
   const [questions, setQestions] = useState(data);

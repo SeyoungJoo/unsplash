@@ -21,6 +21,7 @@ const Navbar = () => {
 
   return (
     <NavContainer>
+      <nav>
       <div className="nav-center">
         <div className="nav-header">
           <Link to ='/'>
@@ -44,15 +45,19 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
+      </nav>
     </NavContainer>
   )
 }
 
 
 const NavContainer = styled.nav`
+:root {
+  --transition: all 0.3s linear;
+}
   nav {
-    background: var(--clr-white);
-    box-shadow: var(--light-shadow);
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   }
   .nav-header {
     display: flex;
@@ -62,31 +67,31 @@ const NavContainer = styled.nav`
   }
   .nav-toggle {
     font-size: 1.5rem;
-    color: var(--clr-primary-5);
+    color: hsl(205, 78%, 60%);
     background: transparent;
     border-color: transparent;
-    transition: var(--transition);
+    transition:  var(--transition);
     cursor: pointer;
   }
   .nav-toggle:hover {
-    color: var(--clr-primary-1);
+    color: hsl(205, 86%, 17%);
     transform: rotate(90deg);
   }
   .logo {
     height: 40px;
   }
   .links a {
-    color: var(--clr-grey-3);
+    color: hsl(209, 34%, 30%);
     font-size: 1rem;
     text-transform: capitalize;
-    letter-spacing: var(--spacing);
+    letter-spacing:  0.1rem;
     display: block;
     padding: 0.5rem 1rem;
     transition: var(--transition);
   }
   .links a:hover {
-    background: var(--clr-primary-8);
-    color: var(--clr-primary-5);
+    background: hsl(205, 86%, 81%);
+    color:  hsl(205, 78%, 60%);
     padding-left: 1.5rem;
   }
   .links-container {
