@@ -3,25 +3,19 @@ const questions = [
     id: 1,
     title: '이 웹사이트의 개발자는 누구인가요?',
     info:
-      'Unicorn vinyl poutine brooklyn, next level direct trade iceland. Shaman copper mug church-key coloring book, whatever poutine normcore fixie cred kickstarter post-ironic street art.',
+      '포토그래퍼에서 프론트앤드 개발자로 전향한 주세영입니다. React의 재사용가능한 컴포넌트와 CSS 스타일링을 좋아합니다.',
   },
   {
     id: 2,
     title: '사용된 기술스텍은 무엇인가요?',
     info:
-      'Coloring book forage photo booth gentrify lumbersexual. Migas chillwave poutine synth shoreditch, enamel pin thundercats fashion axe roof party polaroid chartreuse.',
+      '리액트 Hook 시스템과 styled components를 기반으로 만들어진 웹사이트 입니다.',
   },
   {
     id: 3,
-    title: 'What is BankID?',
+    title: '더 많은 정보는 어디에서 얻을 수 있나요?',
     info:
-      'Enamel pin fam sustainable woke whatever venmo. Authentic asymmetrical put a bird on it, lumbersexual activated charcoal kinfolk banjo cred pickled sartorial.',
-  },
-  {
-    id: 4,
-    title: 'Whose birth number can I use?',
-    info:
-      'Edison bulb direct trade gentrify beard lo-fi seitan sustainable roof party franzen occupy squid. Knausgaard cronut succulents, scenester readymade shabby chic lyft. Copper mug meh vegan gentrify.',
+      '프로젝트의 자세한 과정과 코드는 이곳에서 👉 https://velog.io/@syjoo/React-Hooks-project 확인하실 수 있습니다 💖',
   }
 ]
 export default questions

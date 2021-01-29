@@ -2,38 +2,38 @@ const people = [
   {
     id: 1,
     image:
-      'https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959131/person-2_ipcjws.jpg',
-    name: 'maria ferguson',
-    title: 'office manager',
+      'https://res.cloudinary.com/dbxbrgwlk/image/upload/v1611914821/31890813_196970901103797_3481356887906058240_n_zfzdhq.png',
+    name: '라이언',
+    title: '사자',
     quote:
-      'Fingerstache umami squid, kinfolk subway tile selvage tumblr man braid viral kombucha gentrify fanny pack raclette pok pok mustache.',
+      '과제용 사진을 찾는데에 유용하게 사용했어요. 나, 라이언을 도와줘서 고마워 💖',
   },
   {
     id: 2,
     image:
-      'https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883417/person-3_ipa0mj.jpg',
-    name: 'john doe',
-    title: 'regular guy',
+      'https://res.cloudinary.com/dbxbrgwlk/image/upload/v1611915156/%EB%AC%B4%EC%A7%80_z3qach.jpg',
+    name: '무지',
+    title: '단무지',
     quote:
-      'Gastropub sustainable tousled prism occupy. Viral XOXO roof party brunch actually, chambray listicle microdosing put a bird on it paleo subway tile squid umami.',
+      '제가 원하는 강아지 사진을 찾을 수 있어서 좋았어요!',
   },
   {
     id: 3,
     image:
-      'https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959121/person-1_aufeoq.jpg',
-    name: 'peter smith',
-    title: 'product designer',
+      'https://res.cloudinary.com/dbxbrgwlk/image/upload/v1611915246/jayg_rb3c9i.jpg',
+    name: '제이지',
+    title: '힙합맨',
     quote:
-      'Drinking vinegar polaroid street art echo park, actually semiotics next level butcher master cleanse hammock flexitarian ethical paleo.',
+      '사이트가 깔끔해서 마음에 드는군! 잘썼네! 하하하',
   },
   {
     id: 4,
     image:
-      'https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg',
-    name: 'susan andersen',
-    title: 'the boss',
+      'https://res.cloudinary.com/dbxbrgwlk/image/upload/v1611915246/tube_zqyfjh.jpg',
+    name: '튜브',
+    title: '오리',
     quote:
-      'Marfa af yr 3 wolf moon kogi, readymade distillery asymmetrical seitan kale chips fingerstache cloud bread mustache twee messenger bag. ',
+      '평소에도 사진찾는걸 좋아하는 나는 여기서 다른사람들이 찍은 사진들을 보면서 한참을 놀았어. >_<',
   },
 ];
 
