@@ -83,7 +83,7 @@ h3 {
   border-color: transparent;
   width: 2rem;
   height: 2rem;
-  background: var(--clr-primary-5);
+  background: var(--clr-primary);
   display: flex;
   align-items: center;
   justify-content: center;

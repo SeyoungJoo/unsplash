@@ -77,7 +77,7 @@ const Wrapper = styled.section `
 }
 .title span {
   font-size: 0.85em;
-  color: var(--clr-primary-5);
+  color: var(--clr-primary);
   margin-right: 1rem;
   font-weight: 700;
 }
@@ -98,38 +98,38 @@ const Wrapper = styled.section `
   width: 150px;
   height: 150px;
   object-fit: cover;
-  border: 4px solid var(--clr-grey-8);
+  border: 4px solid var(--clr-grey-2);
   box-shadow: var(--dark-shadow);
 }
 article h4 {
   text-transform: uppercase;
-  color: var(--clr-primary-5);
+  color: var(--clr-primary);
   margin-bottom: 0.25rem;
 }
 .title {
   text-transform: capitalize;
   margin-bottom: 0.75rem;
-  color: var(--clr-grey-3);
+  color: var(--clr-grey-1);
 }
 .text {
   max-width: 35em;
   margin: 0 auto;
   margin-top: 2rem;
   line-height: 2;
-  color: var(--clr-grey-5);
+  color: var(--clr-grey-2);
 }
 .icon {
   font-size: 3rem;
   margin-top: 1rem;
-  color: var(--clr-primary-5);
+  color: var(--clr-primary);
 }
 .prev,
 .next {
   position: absolute;
   top: 200px;
   transform: translateY(-50%);
-  background: var(--clr-grey-5);
-  color: var(--clr-white);
+  background: var(--clr-grey-2);
+  color: white;
   width: 1.25rem;
   height: 1.25rem;
   display: grid;
@@ -142,7 +142,7 @@ article h4 {
 }
 .prev:hover,
 .next:hover {
-  background: var(--clr-primary-5);
+  background: var(--clr-primary);
 }
 .prev {
   left: 0;
