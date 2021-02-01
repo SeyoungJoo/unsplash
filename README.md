@@ -6,5 +6,3 @@
 #### 과정 소개: https://velog.io/@syjoo/React-Hooks-project
 
 #### 웹사이트: https://unsplash-zeta.vercel.app
-
-![](https://images.velog.io/images/syjoo/post/675b8e5d-aeeb-435a-8c8e-a68308d4b429/1.gif)
