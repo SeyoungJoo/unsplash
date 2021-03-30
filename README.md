@@ -91,6 +91,7 @@ Slider 구현 (자동넘김, 버튼넘김)
 ### Navbar
 ![](https://images.velog.io/images/syjoo/post/3577ca3e-f72c-471d-b2ca-e922ecd3efcb/2.gif)
 ![](https://images.velog.io/images/syjoo/post/365f42ea-76af-4a12-b935-3c6385c6b31d/ezgif.com-gif-maker.gif)
+
 **🔍 부딪혔던 문제와 해결사항 **
 화면이 작아지면 토클버튼을 클릭했을때 navbar 리스트가 나오도록 설정하였는데 처음에는 이렇게 hard-coding을 했으나
 ```javascript
@@ -123,6 +124,7 @@ Slider 구현 (자동넘김, 버튼넘김)
 
 ### 슬라이드
 ![](https://images.velog.io/images/syjoo/post/b8e5bcf0-ec01-4c31-af86-f688683e5e5f/5.gif)
+
 우선 CSS로 세가지 article을 하나로 묶어 flexbox로 지정해놓고,
 가운데슬라이드/왼쪽/오른쪽 슬라이드 3개로 배열해서 가운데에 있는것만 보이게 해주었다.
 
