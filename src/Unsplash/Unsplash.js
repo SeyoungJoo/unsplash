@@ -61,7 +61,7 @@ function Unsplash() {
         })
       }
     })
-    // return () => window.removeEventListener('scroll', event)
+    return () => window.removeEventListener('scroll', event)
   }, [])
 
   const handleSubmit = (e) => {
