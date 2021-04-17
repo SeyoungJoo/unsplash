@@ -8,7 +8,7 @@ const searchUrl = `https://api.unsplash.com/search/photos/`
 function Unsplash() {
   const [loading, setLoading] = useState(false);
   const [photos, setPhotos] = useState([]);
-  const [page, setPage] = useState(0);  
+  const [page, setPage] = useState(0);
   const [query, setQuery] = useState('');
 
   const fetchImages = async() => {
@@ -18,7 +18,7 @@ function Unsplash() {
     const urlQuery = `&query=${query}`
     
     if(query){
-     url = `${searchUrl}${clientID}${urlPage}${urlQuery}` 
+      url = `${searchUrl}${clientID}${urlPage}${urlQuery}` 
     }
     else{
       url = `${mainUrl}${clientID}${urlPage}`
@@ -32,9 +32,9 @@ function Unsplash() {
         if (query && page === 1) {
           return data.results
         } else if (query){
-         return [...oldPhotos, ...data.results]
+        return [...oldPhotos, ...data.results]
         } else {
-         return [...oldPhotos, ...data]
+        return [...oldPhotos, ...data]
         }
       })
       setLoading(false)
@@ -44,10 +44,13 @@ function Unsplash() {
     } 
   }
 
+  //페이지를 열었을때 바로 fetchImage를 하기위한 useEffect
   useEffect(() => {
     fetchImages()
-  },[page]) //re-fetchImage when page's value changed
+  },[page]);
 
+
+  // scroll을 위한 useEffect
   useEffect(() => {
     const event = window.addEventListener('scroll', ()=> {
       if (
@@ -84,11 +87,10 @@ function Unsplash() {
       <section className='photos'>
       <div className='photos-center'>
         {photos.map((photo)=> {
-         return <Photo key={photo.id} {...photo}/>
+          return <Photo key={photo.id} {...photo}/>
         })}
       </div>
       {loading && <h2 className='loading'>Loading...</h2>}
-      {/* if loading is true, display <h2> */}
       </section>
     </main>
   )
