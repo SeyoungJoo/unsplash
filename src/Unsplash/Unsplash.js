@@ -34,7 +34,7 @@ function Unsplash() {
           return [...oldPhotos, ...data.results]
         } else {
           return [...oldPhotos, ...data]
-        }
+        } 
       })
       setLoading(false)
     } catch (error) {
@@ -43,13 +43,13 @@ function Unsplash() {
     } 
   }
 
-  //페이지를 열었을때 바로 fetchImage를 하기위한 useEffect
+  //페이지 value가 바뀔때마다 fetchImage를 re-trigger 하기위한 useEffect
   useEffect(() => {
     fetchImages()
   },[page]);
 
 
-  // scroll을 위한 useEffect
+  // infinite-scroll을 위한 useEffect
   useEffect(() => {
     const event = window.addEventListener('scroll', ()=> {
       if (
