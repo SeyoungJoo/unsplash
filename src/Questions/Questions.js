@@ -4,7 +4,7 @@ import data from './data';
 import Question from './Question';
 
 function Questions() {
-  const [questions, setQestions] = useState(data);
+  const questions = useState(data)[0];
 
   return (
     <Wrapper>

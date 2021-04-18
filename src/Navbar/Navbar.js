@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
-import { FaBars, FaTwitter } from 'react-icons/fa'
+import { FaBars } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import { links, social } from './data'
+import { links } from './data'
 import logo from './logo.svg'
 
 const Navbar = () => {
@@ -35,13 +35,13 @@ const Navbar = () => {
         </div>
         <div className='links-container' ref={linksContainerRef}>
           <ul className='links' ref={linksRef}>
-           {links.map((link)=> {
-             const {id, url, text} = link
-             return (
-             <li key={id}>
-               <Link to={url}>{text}</Link>
-             </li>)
-           })}
+            {links.map((link)=> {
+              const {id, url, text} = link
+              return (
+              <li key={id}>
+                <Link to={url}>{text}</Link>
+              </li>)
+            })}
           </ul>
         </div>
       </div>
