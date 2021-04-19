@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 import { FaQuoteRight } from 'react-icons/fa';
 import data from './data';
+
 function Review() {
   const people = useState(data)[0];
   const [index, setIndex] = useState(0);
@@ -12,7 +13,7 @@ function Review() {
     if(index < 0){
       setIndex(lastIndex);
     }
-    if (index > lastIndex){
+    if(index > lastIndex){
       setIndex(0);
     }
   }, [index, people]);
