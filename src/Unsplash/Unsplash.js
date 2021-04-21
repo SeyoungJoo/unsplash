@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import Photo from './Photo'
 const clientID = `?client_id=${process.env.REACT_APP_ACCESS_KEY}`
@@ -6,59 +6,93 @@ const mainUrl = `https://api.unsplash.com/photos/`
 const searchUrl = `https://api.unsplash.com/search/photos/`
 
 function Unsplash() {
+  const [loadNextPage, setLoadNextPage] = useState(false);
+  const [loadNewQuery, setLoadNewQuery] = useState(false);
   const [loading, setLoading] = useState(false);
   const [photos, setPhotos] = useState([]);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState('');
+  const [lastQuery, setLastQuery] = useState('');
+
+  const apiResponses = useMemo(() => { return {} }, [])
 
   const fetchImages = async() => {
+    if(loading) {
+      return
+    }
+
     setLoading(true)
+
     let url
-    const urlPage = `&page=${page}`
-    const urlQuery = `&query=${query}`
+    let newPage = page
+    if(loadNextPage) {
+      newPage = page + 1
+    }
+    else if(loadNewQuery) {
+      newPage = 1
+    }
+
+    setPage(newPage)
+    const urlPage = `&page=${newPage}`
+
+    console.debug(`fetchImages page:${newPage}, query:${query}`)
     
-    if (query) {
+    if(query){
+      const urlQuery = `&query=${query}`
       url = `${searchUrl}${clientID}${urlPage}${urlQuery}` 
-    } else {
+    }
+    else{
       url = `${mainUrl}${clientID}${urlPage}`
     }
 
     try {
-      const response = await fetch(url)
-      const data = await response.json()
+      let newPhotos = apiResponses[url];
+      if(!newPhotos) {
+        const response = await fetch(url)
+        const data = await response.json()
+        newPhotos = query ? data.results : data
+        apiResponses[url] = newPhotos
+      }
+      
+      setLoadNextPage(false);
+      setLoadNewQuery(false);
+      setLastQuery(query);
 
       setPhotos((oldPhotos) => {
-        if (query && page === 1) {
-          return data.results
-        } else if (query){
-          return [...oldPhotos, ...data.results]
+        const needAppend = newPage > 1         
+        if(needAppend) {
+          return [...oldPhotos, ...newPhotos]
         } else {
-          return [...oldPhotos, ...data]
-        } 
+          return newPhotos
+        }
       })
       setLoading(false)
     } catch (error) {
-      console.log(error)
       setLoading(false)
+      setLoadNextPage(false);
+      setLoadNewQuery(false);
+      console.error(error)
     } 
   }
 
   //페이지 value가 바뀔때마다 fetchImage를 re-trigger 하기위한 useEffect
   useEffect(() => {
-    fetchImages()
-  },[page]);
+    if(loadNextPage || loadNewQuery || Object.keys(apiResponses).length == 0) {
+      fetchImages()
+    }
+  },[loadNextPage, loadNewQuery]);
 
 
   // infinite-scroll을 위한 useEffect
   useEffect(() => {
-    const event = window.addEventListener('scroll', ()=> {
+    const event = window.addEventListener('scroll', () => {
       if (
         (!loading && window.innerHeight + window.scrollY) >= 
         document.body.scrollHeight - 2
       ) {
-        setPage((oldPage)=>{
-          return oldPage + 1
-        })
+        if(!loadNextPage) {
+          setLoadNextPage(true)
+        }
       }
     })
     return () => window.removeEventListener('scroll', event)
@@ -66,7 +100,10 @@ function Unsplash() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setPage(1)
+    if(lastQuery === query) {
+      return
+    }
+    setLoadNewQuery(true)    
   }
 
   return (
@@ -86,8 +123,8 @@ function Unsplash() {
       </section>
       <section className='photos'>
       <div className='photos-center'>
-        {photos.map((photo, index)=> {
-          return <Photo key={index} {...photo}/>
+        {photos.map((photo)=> {
+          return <Photo key={photo.id} {...photo}/>
         })}
       </div>
       {loading && <h2 className='loading'>Loading...</h2>}
