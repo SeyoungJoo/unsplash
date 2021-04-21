@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import Photo from './Photo'
 const clientID = `?client_id=${process.env.REACT_APP_ACCESS_KEY}`
@@ -17,7 +17,7 @@ function Unsplash() {
   const apiResponses = useMemo(() => { return {} }, [])
 
   const fetchImages = async() => {
-    if(loading){
+    if(loading) {
       return
     }
 
@@ -27,7 +27,8 @@ function Unsplash() {
     let newPage = page
     if(loadNextPage) {
       newPage = page + 1
-    } else if(loadNewQuery) {
+    }
+    else if(loadNewQuery) {
       newPage = 1
     }
 
@@ -36,18 +37,21 @@ function Unsplash() {
 
     console.debug(`fetchImages page:${newPage}, query:${query}`)
     
-    if (query) {
-      const urlPage = `&page=${page}`
+    if(query){
+      const urlQuery = `&query=${query}`
       url = `${searchUrl}${clientID}${urlPage}${urlQuery}` 
-    } else {
+    }
+    else{
       url = `${mainUrl}${clientID}${urlPage}`
     }
 
     try {
       let newPhotos = apiResponses[url];
       if(!newPhotos) {
-      const response = await fetch(url)
-      const data = await response.json()
+        const response = await fetch(url)
+        const data = await response.json()
+        newPhotos = query ? data.results : data
+        apiResponses[url] = newPhotos
       }
       
       setLoadNextPage(false);
@@ -81,14 +85,14 @@ function Unsplash() {
 
   // infinite-scroll을 위한 useEffect
   useEffect(() => {
-    const event = window.addEventListener('scroll', ()=> {
+    const event = window.addEventListener('scroll', () => {
       if (
         (!loading && window.innerHeight + window.scrollY) >= 
         document.body.scrollHeight - 2
       ) {
-        setPage((oldPage)=>{
-          return oldPage + 1
-        })
+        if(!loadNextPage) {
+          setLoadNextPage(true)
+        }
       }
     })
     return () => window.removeEventListener('scroll', event)
@@ -119,8 +123,8 @@ function Unsplash() {
       </section>
       <section className='photos'>
       <div className='photos-center'>
-        {photos.map((photo, index)=> {
-          return <Photo key={index} {...photo}/>
+        {photos.map((photo)=> {
+          return <Photo key={photo.id} {...photo}/>
         })}
       </div>
       {loading && <h2 className='loading'>Loading...</h2>}
