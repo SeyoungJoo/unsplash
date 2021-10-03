@@ -1,4 +1,4 @@
-### 홈페이지 바로가기 👉 https://unsplash-zeta.vercel.app
+### Go to the Website 👉 https://unsplash-zeta.vercel.app
 
 ### <span style="color:lightseagreen"> Technical Stack </span>
 HTML/CSS
