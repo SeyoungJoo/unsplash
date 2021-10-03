@@ -1,38 +1,38 @@
 ### 홈페이지 바로가기 👉 https://unsplash-zeta.vercel.app
 
-### <span style="color:lightseagreen"> 기술스텍 </span>
+### <span style="color:lightseagreen"> Technical Stack </span>
 HTML/CSS
 React
 JavaScript(ES6+)
 Styled-components
 Git
 
-### <span style="color:lightseagreen"> 주요구현사항 </span>
-모든 페이지의 레이아웃 구현
-Query string을 이용해서 API를 가져오는 기능 구현
-무한스크롤로 이미지를 받아오는 기능을 구현
-Navbar와 반응형 토글 구현
-Accordion 버튼 구현
-Slider 구현 (자동넘김, 버튼넘김)
+### <span style="color:lightseagreen"> Key implementations </span>
+Layout for all page
+Fetching API with query string when user search
+Infinite Scrolling
+Navbar and responsive toggle
+Accordion button
+Slider (auto slider, button slider)
 
 
-### <span style="color:lightseagreen"> 과정설명 & 결과화면 </span>
+### <span style="color:lightseagreen"> process & result </span>
 
 ### unsplash API
-1. unsplash 사이트에서 API를 가져온 후 image, user, likes 데이터를 fetch 해주었다.
-2. Query string을 이용하여 검색어에 따른 이미지를 fetch하였다.
-2. 무한스크롤 기능은 useEffect로 scroll에 eventListener을 더해 구현하였다.
+1. Fetched image, user, likes from unsplash API
+2. Fetched images by search keyword from user
+2. Implemented infinite scroll by adding eventListener on scroll with useEffect
 
-#### 기본 메인화면
+#### Main Screen
 ![](https://images.velog.io/images/syjoo/post/675b8e5d-aeeb-435a-8c8e-a68308d4b429/1.gif)
 
-#### 검색어 입력시
+#### When entering the search keyword
 ![](https://images.velog.io/images/syjoo/post/30aa5375-903d-4ec3-8c83-19a8e233ae3e/3.gif)
 
 
-**🔍 부딪혔던 문제와 해결사항 **
-* 화면에 닿기 약간 전에 이미지를 더 로딩해주기 위해 화면 크기에서 2px을 빼주었다.
-* loding component를 따로 만들어주어 고객이 스크롤을 내리면서 이미지가 fetch 되기를 기다리는 동안에 알수있게 해주었기 때문에 loading이 끝나고만 이미지를 fetch하기 위하여 ternary operator로 조건을 넣어주었다.
+**🔍 Problem and Solution 1 **
+* Subtracted -2px from the screen size to load images furthur before a scroll touching the bottom of screen
+* Added loding component so that user can aware of when images loading while they scrolling
 ```javascript
 
   useEffect(() => {
@@ -94,8 +94,8 @@ Slider 구현 (자동넘김, 버튼넘김)
 ![](https://images.velog.io/images/syjoo/post/3577ca3e-f72c-471d-b2ca-e922ecd3efcb/2.gif)
 ![](https://images.velog.io/images/syjoo/post/365f42ea-76af-4a12-b935-3c6385c6b31d/ezgif.com-gif-maker.gif)
 
-**🔍 부딪혔던 문제와 해결사항 **
-화면이 작아지면 토클버튼을 클릭했을때 navbar 리스트가 나오도록 설정하였는데 처음에는 이렇게 hard-coding을 했으나
+**🔍 Problem and Solution 2 **
+Initially I hard-coded navbar toggle button on small screen BUT
 ```javascript
 //navbar.js
  <div className=
@@ -105,7 +105,8 @@ Slider 구현 (자동넘김, 버튼넘김)
     height: 10rem;
   }
 ```
-이랬더니 화면이 좁아졌을때 나브바 토클버튼을 클릭하면 세로로 나오는 상황에서,  나브바 메뉴를 더 추가하면 컨테이너의 길이가 10rem이기때문에 그 밑은 잘려서 보이지 않는 문제가 생겼다. 그래서 useRef를 이용해서 다이나믹하게 바꿔주었다.
+there's a problem that when I added navbar menu then container length got longer and bottom part was cut off.
+so I updated dynamically with useRef
 ```javascript
   const [showLinks, setShowLinks] = useState(false)
   const linksContainerRef = useRef(null)
@@ -121,14 +122,14 @@ Slider 구현 (자동넘김, 버튼넘김)
   },[showLinks])
 ```
 
-### accodion 버튼
+### accodion Button
 ![](https://images.velog.io/images/syjoo/post/31799cfd-4c34-4ace-88c9-b40c82d9102a/4.gif)
 
-### 슬라이드
+### Slider
 ![](https://images.velog.io/images/syjoo/post/b8e5bcf0-ec01-4c31-af86-f688683e5e5f/5.gif)
 
-우선 CSS로 세가지 article을 하나로 묶어 flexbox로 지정해놓고,
-가운데슬라이드/왼쪽/오른쪽 슬라이드 3개로 배열해서 가운데에 있는것만 보이게 해주었다.
+First of all, I tied 3 article as one with flexbox.
+and arranged as middle/left/right slides and show the one in the middle.
 
 ```css
 .section-center {
@@ -158,9 +159,9 @@ article.nextSlide {
   transform: translateX(100%);
 }
 ```
+After that specify the index to each the slide with UseState, 
+and when the index matches each person's index, make slide's positon change (the reason I declared the position variable)
 
-그 후 useState를 사용하여 index를 지정해주고
-이 인덱스가 각각의 사람들의 index와 매치가 되면 slide의 position을 바꿔주는 코드를 작성했다. (그래서 let을 사용하여 position의 변수를 선언했다)
 ```javascript
  const [index, setIndex] = useState(0)
  
@@ -187,28 +188,4 @@ article.nextSlide {
 }
  
  ```
- 그 후에 오른쪽 왼쪽으로 넘기는 버튼을 이용할때 왼쪽으로 넘기는 버튼을 클릭하면 index - 1 이되기때문에 제대로 넘어가지않는 문제가 발생하여 useEffect를 사용하여 조건을 넣어주었다.
- ```javascript
- const [people, setPeople] = useState(data)
- const [index, setIndex] = useState(0)
-
- useEffect(()=> {
-   const lastIndex = people.length - 1;
-   if(index < 0){
-     setIndex(lastIndex);
-   }
-   if (index > lastIndex){
-     setIndex(0);
- }, [index, people])
-
-return (
-    <button className='prev' onClick={()=> setIndex(index - 1)}>
-       <FiChevronLeft/>
-    </button>
-    <button className='next' onClick={()=> setIndex(index + 1)}>
-       <FiChevronRight/>
-    </button>
-)
-
-
-```
+ 
