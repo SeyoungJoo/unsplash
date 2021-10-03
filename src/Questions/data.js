@@ -12,7 +12,7 @@ const questions = [
   {
     id: 3,
     title: "Where can I find more information?",
-    info: "You can check more of process and code HERE 👉https://velog.io/@syjoo/React-Hooks-project",
+    info: "You can check more of process and code HERE 👉https://github.com/SeyoungJoo/unsplash",
   },
 ];
 export default questions;
