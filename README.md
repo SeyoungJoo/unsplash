@@ -50,7 +50,7 @@ Slider (auto slider, button slider)
 <br/>
 <br/>
 
-* 기본으로 로딩되는 디폴트 사진들이 있고, 검색어를 입력했을때 query에 따라 나와야하는 사진들이 있었기에 두가지의 조건을 따로 주.
+* Set two condition separately for default photos and photos with a search keyword 
 
 ``` javascript
 
